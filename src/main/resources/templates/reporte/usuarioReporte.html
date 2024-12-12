@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reporte de Usuarios</title>
+</head>
+<body>
+<h1>Reporte de Usuarios</h1>
+<p>Fecha: [[${fecha}]]</p>
+<h3>Listado de Usuarios</h3>
+<table border = "1" cellpadding="5" width="100%">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reg : ${registros}">
+        <td th:text="${reg.id}"></td>
+        <td th:text="${reg.email}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

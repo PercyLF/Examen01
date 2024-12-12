@@ -15,5 +15,5 @@ public class Examen01Application {
 }
 
 /*
-Entity, repository, dto, validator, converter, service, impl, rest, mainController
+Entity, repository, dto, exception, validator, converter, service, impl, rest, mainController
  */

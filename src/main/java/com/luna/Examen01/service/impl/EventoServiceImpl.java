@@ -80,6 +80,9 @@ public class EventoServiceImpl implements EventoService {
             Evento registro=repository.findById(evento.getId()).orElseThrow(()->new NoDataFoundException("No existe un registro con ese ID"));
             registro.setNombre(evento.getNombre());
             registro.setDescripcion(evento.getDescripcion());
+            registro.setFechaInicio(evento.getFechaInicio());
+            registro.setFechaFin(evento.getFechaFin());
+            registro.setCosto(evento.getCosto());
             repository.save(registro);
             return registro;
         } catch (ValidateException | NoDataFoundException e) {

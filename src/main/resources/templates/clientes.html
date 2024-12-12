@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -27,6 +27,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
+    <!-- Navbar -->
     <div th:replace="fragmentos :: menuSuperior"></div>
     <!-- /.navbar -->
 
@@ -49,10 +50,8 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="m-0">Eventos <button class="btn btn-primary" data-toggle="modal"
-                                data-target="#modal-update" id="nuevo"><i class="fas fa-file"></i> Nuevo</button>
-                                    <a href="v1/eventos/report" class="btn btn-info">Reporte</a>
-                                </h5>
+                                <h5 class="m-0">Clientes <button class="btn btn-primary" data-toggle="modal"
+                                                                 data-target="#modal-update" id="nuevo"><i class="fas fa-file"></i> Nuevo</button></h5>
                             </div>
                             <div class="card-body">
                                 <div class="mt-2 table-responsive">
@@ -62,10 +61,10 @@
                                             <th>Opciones</th>
                                             <th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Descripción</th>
-                                            <th>FechaInicio</th>
-                                            <th>FechaFin</th>
-                                            <th>Costo</th>
+                                            <th>Tipo Documento</th>
+                                            <th>Numero Documento</th>
+                                            <th>Teléfono</th>
+                                            <th>Email</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -102,26 +101,33 @@
                             </div>
                             <div class="col-md-6 col-12"> <!-- Responsive en todos los tamaños -->
                                 <div class="form-group">
-                                    <label for="descripcion">Descripción</label>
-                                    <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción">
+                                    <label for="tipoDocumento">Tipo Documento</label>
+                                    <select name="tipoDocumento" id="tipoDocumento" class="form-control">
+                                        <option value="" disable>Selecciona un Tipo Documento</option>
+                                        <option value="0">Documento no domiciliado sin RUC</option>
+                                        <option value="1">DNI</option>
+                                        <option value="4">Carnet de extranjería</option>
+                                        <option value="6">RUC</option>
+                                        <option value="7">Pasaporte</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12"> <!-- Responsive en todos los tamaños -->
                                 <div class="form-group">
-                                    <label for="fechaInicio">FechaInicio</label>
-                                    <input type="date" class="form-control" id="fechaInicio" placeholder="Ingrese Fecha">
+                                    <label for="numeroDocumento">Numero Documento</label>
+                                    <input type="text" class="form-control" id="numeroDocumento" placeholder="Ingrese descripción">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12"> <!-- Responsive en todos los tamaños -->
                                 <div class="form-group">
-                                    <label for="fechaFinal">FechaFin</label>
-                                    <input type="date" class="form-control" id="fechaFinal" placeholder="Ingrese Fecha">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Ingrese descripción">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12"> <!-- Responsive en todos los tamaños -->
                                 <div class="form-group">
-                                    <label for="costo">Costo</label>
-                                    <input type="text" class="form-control" id="costo" placeholder="Ingrese costo">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" placeholder="Ingrese descripción">
                                 </div>
                             </div>
                             <div class="col-12"> <!-- Ocupa el 100% en pantallas pequeñas -->
@@ -163,7 +169,7 @@
 <script src="js/adminlte.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/sweetalert2@11.js"></script>
-<script src="js/scripts/eventos.js"></script>
+<script src="js/scripts/clientes.js"></script>
 <!-- scripts de cada plantilla -->
 <!--Fin Scripts -->
 </body>

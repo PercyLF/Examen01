@@ -7,11 +7,11 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" type="text/css">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="js/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" th:href="@{js/plugins/fontawesome-free/css/all.min.css}" type="text/css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/adminlte.css">
+    <link rel="stylesheet" th:href="@{css/adminlte.css}" type="text/css">
 </head>
 
 <body class="hold-transition login-page">
@@ -22,9 +22,9 @@
         </div>
         <div class="card-body">
             <p class="login-box-msg">Acceder</p>
-            <form action="" method="post">
+            <form class="login-form" th:action="@{/login}" method="post">
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" id="email" name="username">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" id="password" name="password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -45,19 +45,20 @@
                     </div>
                 </div>
             </form>
+            <div th:if="${param.error}" class="alert alert-danger mt-5 pt-5" role="alert">
+                Usuario o Contraseña incorrectos.
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success mt-5 pt-5" role="alert">
+                Sesi&oacute;n terminada.
+            </div>
         </div>
 
     </div>
 
 </div>
-<!--Scripts -->
-<!-- jQuery -->
-<script src="js/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="js/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="js/adminlte.min.js"></script>
-<!--Fin Scripts -->
+<script th:src="@{js/plugins/jquery/jquery.min.js}" type=""></script>
+<script th:src="@{js/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{js/adminlte.min.js}"></script>
 </body>
 
 </html>

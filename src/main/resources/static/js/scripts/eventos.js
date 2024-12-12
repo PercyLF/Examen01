@@ -19,7 +19,7 @@ function save(bandera) {
         nombre: $("#nombre").val(),
         descripcion: $("#descripcion").val(),
         fechaInicio: $("#fechaInicio").val(),
-        fechaFinal: $("#fechaFinal").val(),
+        fechaFinal: $("#fechaFin").val(),
         costo: $("#costo").val(),
     };
 
@@ -90,7 +90,7 @@ function getTabla() {
                         <button type="button" class="btn btn-danger btn-xs eliminar">
                             <i class="fas fa-trash"></i>
                         </button>`;
-                    t.row.add([botonera, registro.id, registro.nombre, registro.descripcion, registro.fechaInicio, registro.fechaFinal, registro.costo]);
+                    t.row.add([botonera, registro.id, registro.nombre, registro.descripcion, registro.fechaInicio.slice(0,10), registro.fechaFinal.slice(0,10), registro.costo]);
                 });
                 t.draw(false);
             } else {
@@ -100,6 +100,10 @@ function getTabla() {
         .fail(handleError);
 }
 
+function convertirFecha(fecha = "") {
+    return fecha.slice(0, 10);
+}
+
 function getFila(id) {
     ajaxRequest("GET", `${url}/${id}`)
         .done((data) => {
@@ -107,8 +111,9 @@ function getFila(id) {
                 $("#modal-title").text("Editar registro");
                 $("#nombre").val(data.body.nombre);
                 $("#descripcion").val(data.body.descripcion);
-                $("#fechaInicio").val(data.body.fechaInicio);
-                $("#fechaFinal").val(data.body.fechaFinal);
+                $("#fechaInicio").val(convertirFecha(data.body.fechaInicio));
+                $("#fechaFin").val(convertirFecha(data.body.fechaFinal));
+                $("#costo").val(data.body.costo);
                 $("#guardar").data("id", data.body.id).data("bandera", 0);
                 $("#modal-update").modal("show");
             } else {
@@ -123,7 +128,8 @@ function clear() {
     $("#nombre").val("");
     $("#descripcion").val("");
     $("#fechaInicio").val("");
-    $("#fechaFinal").val("");
+    $("#fechaFin").val("");
+    $("#costo").val("");
     $("#guardar").data("id", 0).data("bandera", 1);
 }
 
